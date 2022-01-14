@@ -1,0 +1,36 @@
+14-01-2022
+
+Day 1 of 90 Days Coding Challenge
+
+Recursion: -
+    When a function calls itself until a certain condition is satisfied is called as recursion.
+If there is not a stopping condition then it is called infinite recursion.
+e.g of infinte recursion (Stack overflow): -
+      void print()
+      {
+        cout<<1<<endl;
+        print();
+      }
+      int main()
+      {
+        print();
+        return 0;
+       }
+       
+e.g of correct recursion: -
+  cnt = 0;
+  f()
+  {
+    if(cnt == 4)
+    {
+      return;
+    }
+    print(cnt);
+    cnt++;
+    f();
+  }
+  
+  int main()
+  {
+    f();
+  }
