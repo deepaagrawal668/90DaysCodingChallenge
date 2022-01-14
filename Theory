@@ -5,6 +5,7 @@ Day 1 of 90 Days Coding Challenge
 Recursion: -
     When a function calls itself until a certain condition is satisfied is called as recursion.
 If there is not a stopping condition then it is called infinite recursion.
+Base case: - No more recursion can happen i.e the condition which stops the infinte loop of recursion is called base case
 e.g of infinte recursion (Stack overflow): -
       void print()
       {
@@ -34,3 +35,112 @@ e.g of correct recursion: -
   {
     f();
   }
+  
+Basic recursion problem: -
+
+Print name 5 times
+#include <iostream>
+using namespace std;
+void f(int i, int n)
+{
+	if(i>n)
+	{
+		return;
+	}
+	cout<<"Deepa"<<endl;
+	f(i+1, n);
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	f(1, n);
+	return 0;
+}                                                           
+
+### Most correct way  ### Time Complexity is O(n)  ### Stack space is O(n)
+
+Print linearly from 1 to N
+#include <iostream>
+using namespace std;
+
+void print(int i, int n)
+{
+	if(i>n)
+	{
+		return;
+	}
+	cout<<i<<endl;
+	print(i+1, n);
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	print(1, n);
+	return 0;
+}
+
+ ### Time Complexity is O(n)  ### Stack space is O(n)
+
+Print linearly from N to 1
+#include <iostream>
+using namespace std;
+
+void f(int n)
+{
+	if(n<1)
+	{
+		return;
+	}
+	cout<<n<<endl;
+	f(n-1);
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	f(n);
+	return 0;
+}
+
+### Time Complexity is O(n)  ### Stack space is O(n)
+ 
+Print 1 to N using back tracking
+void print(int i, int n)				// Using Back tracking
+{
+	if(i<1)
+	{
+		return;
+	}
+	print(i-1, n);
+	cout<<i<<endl;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	print(n, n);
+	return 0;
+}
+
+Print N to 1 using back tracking
+void f(int i, int n)				// Using Back tracking
+{
+	if(i>n)
+	{
+		return;
+	}
+	f(i+1, n);
+	cout<<i<<endl;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	f(1, n);
+	return 0;
+}
