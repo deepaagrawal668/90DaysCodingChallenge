@@ -241,5 +241,120 @@ int main()
 }
 
 // Using two pointer
+void f(int i, int a[], int n)
+{
+	if(i>=n/2)
+	{
+		return;
+	}
+	swap(a[i], a[n-i-1]);
+	f(i+1, a, n);
+}
 
+int main()
+{
+	int n;
+	cin>>n;
+	int a[n];
+	for(int i = 0; i<n; i++)
+	{
+		cin>>a[i];
+	}
+	f(0, a, n);
+	for(int i = 0; i<n; i++)
+	{
+		cout<<a[i]<<" ";
+	}
+}
+
+Day 3: -
+
+Checking a string is pallindrome or not: -
+
+bool f(string s, int i)
+{
+	if(i>s.size())
+	{
+		return true;
+	}
+	else if(s[i] != s[s.size() - i - 1])
+	{
+		return false;
+	}
+	f(s, i+1);
+}
+
+int main()
+{
+	string s;
+	cin>>s;
+	cout<<f(s, 0)<<endl;
+	return 0;
+}
+
+Fibonnaci number: -
+
+int fibonaci(int n)
+{
+	if(n == 0)
+	{
+		return 0;
+	}
+	else if(n == 1)
+	{
+		return 1;
+	}
+	return fibonaci(n-1) + fibonaci(n-2);;
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	cout<<fibonaci(n)<<endl;
+	return 0;
+}					// Complexity of multiple recursion is 2^n
+
+Subsequence: -
+	A contigous/ non-contiguous sequence, which follows the order
+	for n = 3 length of array there are 8 subsequence
+Power set is used to list all the subsequence of the array.
+
+using recurison: -
+void f(int idx, vector<int>&ds, vector<int> arr, int n)
+{
+	if(idx == n)
+	{
+		for(int i = 0; i<ds.size(); i++)
+		{
+			cout<<ds[i]<<" ";
+		}
+		if(ds.size() == 0)
+		{
+			cout<<"{}";
+		}
+		cout<<endl;
+		return;
+	}
+	f(idx+1, ds, arr, n);  // Not pick
+	ds.push_back(arr[idx]);
+	f(idx+1, ds, arr, n); // pick
+	ds.pop_back();
+	
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	vector<int> arr;
+	for(int i = 0; i<n; i++)
+	{
+		int a;
+		cin>>a;
+		arr.push_back(a);
+	}
+	vector<int> ds;
+	f(0, ds,arr, n);
+}
 
