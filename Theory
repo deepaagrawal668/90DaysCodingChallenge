@@ -358,3 +358,133 @@ int main()
 	f(0, ds,arr, n);
 }
 
+Day 4: -
+
+Subsequence having sum equals to k: -
+
+void f(int idx, int s, vector<int> ds, vector<int> v, int sum)
+{
+	if(idx == v.size())
+	{
+		if(s == sum)
+		{
+			for(int i = 0; i<ds.size(); i++)
+			{
+				cout<<ds[i]<<" ";
+			}
+			cout<<endl;
+		}
+		return;
+	}
+	f(idx+1, s, ds, v, sum);
+	ds.push_back(v[idx]);
+	s += v[idx];
+	f(idx+1, s, ds, v, sum);
+	ds.pop_back();
+	s -= v[idx];
+}
+
+int main()
+{
+	int n, sum;
+	cin>>n;
+	vector<int> v;
+	for(int i = 0; i<n; i++)
+	{
+		int a;
+		cin>>a;
+		v.push_back(a);
+	}
+	cout<<"Enter the value of sum: -";
+	cin>>sum;
+	vector<int> ds;
+	f(0, 0, ds, v, sum);
+	return 0;
+}
+
+Printing any 1 subsequence having sum K: -
+bool f(int idx, int s, vector<int> ds, vector<int> v, int sum)
+{
+	if(idx == v.size())
+	{
+		if(s == sum)
+		{
+			for(int i = 0; i<ds.size(); i++)
+			{
+				cout<<ds[i]<<" ";
+			}
+			cout<<endl;
+			return true;
+		}
+		return false;
+	}
+	ds.push_back(v[idx]);
+	s += v[idx];
+	if(f(idx+1, s, ds, v, sum) == true)
+	{
+		return true;
+	}
+	ds.pop_back();
+	s -= v[idx];
+	if(f(idx+1, s, ds, v, sum) == true)
+	{
+		return true;
+	}
+	return false;
+}
+
+int main()
+{
+	int n, sum;
+	cin>>n;
+	vector<int> v;
+	for(int i = 0; i<n; i++)
+	{
+		int a;
+		cin>>a;
+		v.push_back(a);
+	}
+	cout<<"Enter sum: -";
+	cin>>sum;
+	vector<int> ds;
+	f(0, 0, ds, v, sum);
+	return 0;
+}
+
+Count of subsequence sum is K: -
+int f(int idx, int s, vector<int> ds, vector<int> v, int sum)
+{
+	if(idx == v.size())
+	{
+		if(s == sum)
+		{
+			return 1;
+		}
+		return 0;
+	}
+	ds.push_back(v[idx]);
+	s += v[idx];
+	int l = f(idx+1, s, ds, v, sum);
+	ds.pop_back();
+	s -= v[idx];
+	int r = f(idx+1, s, ds, v, sum);
+	return l+r;
+}
+
+int main()
+{
+	int n, sum;
+	cin>>n;
+	vector<int> v;
+	for(int i = 0; i<n; i++)
+	{
+		int a;
+		cin>>a;
+		v.push_back(a);
+	}
+	cout<<"Enter sum: -";
+	cin>>sum;
+	vector<int> ds;
+	cout<<f(0, 0, ds, v, sum);
+	return 0;
+}
