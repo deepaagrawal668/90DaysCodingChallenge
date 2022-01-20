@@ -488,3 +488,50 @@ int main()
 	cout<<f(0, 0, ds, v, sum);
 	return 0;
 }
+
+Day 4:- 
+
+Combination Sequence 1: -
+
+void f(int idx, int sum, vector<vector<int> > &ans,vector<int> ds, vector<int> v)
+{
+	if(idx == v.size())
+	{
+		if(sum == 0)
+		{
+			ans.push_back(ds);
+		}
+		return;
+	}
+	if(sum >= v[idx])
+	{
+		ds.push_back(v[idx]);
+		f(idx, sum - v[idx], ans, ds, v);
+		ds.pop_back();
+	}
+	
+	f(idx+1, sum, ans ,ds, v);
+}
+
+int main()
+{
+	int n, sum;
+	cin>>n;
+	vector<int> v;
+	for(int i = 0; i<n; i++)
+	{
+		int a;
+		cin>>a;
+		v.push_back(a);
+	}
+	vector<int> ds;
+	vector<vector<int> > ans;
+	cout<<"Enter the sum: -";
+	cin>>sum;
+	f(0, sum, ans, ds, v);
+	for(auto i: ans)
+	{
+		cout<<ans[i]<<endl;
+	}
+	return 0;
+}
